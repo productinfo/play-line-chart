@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>elevation</key>
+		<integer>965</integer>
+		<key>distance</key>
+		<integer>1340</integer>
+		<key>name</key>
+		<string>Col de Grosse Pierre</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<integer>789</integer>
+		<key>distance</key>
+		<real>1457.3</real>
+		<key>name</key>
+		<string>Côte du Passage de la Douleur</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<integer>856</integer>
+		<key>distance</key>
+		<integer>1483</integer>
+		<key>name</key>
+		<string>Côte de Maison-Rouge</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<integer>1000</integer>
+		<key>distance</key>
+		<integer>1506</integer>
+		<key>name</key>
+		<string>Côte de Saignelégier</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<integer>1029</integer>
+		<key>distance</key>
+		<real>1533.2</real>
+		<key>name</key>
+		<string>Côte de Saulcy</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>829.3</real>
+		<key>distance</key>
+		<integer>1556</integer>
+		<key>name</key>
+		<string>Côte de la Caquerelle</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>785.6</real>
+		<key>distance</key>
+		<real>1567.2</real>
+		<key>name</key>
+		<string>Col de la Croix</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>909.6</real>
+		<key>distance</key>
+		<real>1731.1</real>
+		<key>name</key>
+		<string>Côte de Corlier</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1499.1</real>
+		<key>distance</key>
+		<real>1771.9</real>
+		<key>name</key>
+		<string>Col du Grand Colombier</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1051.3</real>
+		<key>distance</key>
+		<real>1795.3</real>
+		<key>name</key>
+		<string>Col de Richemond</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1994.2</real>
+		<key>distance</key>
+		<real>1858.8</real>
+		<key>name</key>
+		<string>Col de la Madeleine</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>2049.5</real>
+		<key>distance</key>
+		<real>1911.5</real>
+		<key>name</key>
+		<string>Col de la Croix de Fer</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1629.3</real>
+		<key>distance</key>
+		<real>1931.8</real>
+		<key>name</key>
+		<string>Col du Mollard</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1684.3</real>
+		<key>distance</key>
+		<real>1966.4</real>
+		<key>name</key>
+		<string>La Toussuire</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1188.2</real>
+		<key>distance</key>
+		<real>2004.6</real>
+		<key>name</key>
+		<string>Col du Grand Cucheron</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1144.6</real>
+		<key>distance</key>
+		<real>2051.1</real>
+		<key>name</key>
+		<string>Col du Granier</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>603.6</real>
+		<key>distance</key>
+		<real>2447.2</real>
+		<key>name</key>
+		<string>Col du Portel</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1507.1</real>
+		<key>distance</key>
+		<real>2541.7</real>
+		<key>name</key>
+		<string>Port de Lers</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1359.9</real>
+		<key>distance</key>
+		<real>2569.5</real>
+		<key>name</key>
+		<string>Mur de Péguère</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1705.4</real>
+		<key>distance</key>
+		<real>2821.4</real>
+		<key>name</key>
+		<string>Col d&apos;Aubisque</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>2135.7</real>
+		<key>distance</key>
+		<real>2887.1</real>
+		<key>name</key>
+		<string>Col du Tourmalet</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1471.1</real>
+		<key>distance</key>
+		<real>2917</real>
+		<key>name</key>
+		<string>Col d&apos;Aspin</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1577.1</real>
+		<key>distance</key>
+		<real>2947.8</real>
+		<key>name</key>
+		<string>Col de Peyresourde</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1341.8</real>
+		<key>distance</key>
+		<real>2990.6</real>
+		<key>name</key>
+		<string>Col de Menté</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>790.7</real>
+		<key>distance</key>
+		<real>3018.5</real>
+		<key>name</key>
+		<string>Col des Ares</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<integer>1767</integer>
+		<key>distance</key>
+		<real>3074.8</real>
+		<key>name</key>
+		<string>Port de Balès</string>
+	</dict>
+	<dict>
+		<key>elevation</key>
+		<real>1578.9</real>
+		<key>distance</key>
+		<integer>3100</integer>
+		<key>name</key>
+		<string>Peyragudes</string>
+	</dict>
+</array>
+</plist>
