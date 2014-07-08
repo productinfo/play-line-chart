@@ -14,7 +14,10 @@ Pod::Spec.new do |s|
   s.homepage         = "http://www.shinobicontrols.com"
   s.license          = 'Apache License, Version 2.0'
   s.author           = { "Alison Clarke" => "aclarke@scottlogic.co.uk" }
-  s.source           = { :git => "git@bitbucket.org:shinobicontrols/play-tour-de-france-line-chart.git", :tag => s.version.to_s }
+  s.source           = { :git => "git@bitbucket.org:shinobicontrols/play-tour-de-france-line-chart.git", 
+                         :tag => s.version.to_s,
+                         :submodules => true 
+                       }
   s.social_media_url = 'https://twitter.com/shinobicontrols'
   s.platform     = :ios, '7.0'
   s.requires_arc = true
