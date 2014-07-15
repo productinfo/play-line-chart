@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Scott Logic. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 #import <ShinobiCharts/ShinobiChart.h>
 
 @interface TDFCrosshairTooltip : SChartCrosshairTooltip

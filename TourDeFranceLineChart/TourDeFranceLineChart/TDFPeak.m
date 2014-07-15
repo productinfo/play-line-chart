@@ -10,6 +10,4 @@
 
 @implementation TDFPeak
 
-@synthesize name, elevation, distanceAlongRoute;
-
 @end

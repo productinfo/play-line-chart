@@ -11,6 +11,7 @@
 @interface TDFSignArrowView()
 
 @property (nonatomic, strong) UIColor *fillColour;
+@property (nonatomic, strong) CAShapeLayer *arrowLayer;
 
 @end
 

@@ -20,8 +20,8 @@ static float const MinYAxisRange = 5;
 
 @property (nonatomic, strong) ShinobiChart *chart;
 @property (nonatomic, strong) TDFDataSource *dataSource;
-@property (nonatomic, strong) NSMutableArray *stageAnnotations;
-@property (nonatomic, strong) NSMutableArray *peakAnnotations;
+@property (nonatomic, strong) NSArray *stageAnnotations;
+@property (nonatomic, strong) NSArray *peakAnnotations;
 
 @property (nonatomic, assign) NSInteger lastXAxisSpan;
 @property (nonatomic, assign) NSInteger stageNumberAxisSpanBoundary;
@@ -35,7 +35,7 @@ static float const MinYAxisRange = 5;
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.view.backgroundColor = [SChartiOS7Theme new].chartStyle.backgroundColor;
-	[self createChart];
+  [self createChart];
 }
 
 - (void)createChart {
@@ -103,7 +103,7 @@ static float const MinYAxisRange = 5;
   SChartTheme *chartTheme = [SChartiOS7Theme new];
   SChartLineSeriesStyle *lineSeriesStyle = [chartTheme lineSeriesStyleForSeriesAtIndex:0 selected:NO];
   lineSeriesStyle.showFill = YES;
-  lineSeriesStyle.areaLineWidth = [NSNumber numberWithFloat:2.f];
+  lineSeriesStyle.areaLineWidth = @2.f;
   lineSeriesStyle.areaLineColor = [UIColor colorWithRed:48.f/255.f green:104.f/255.f blue:18.f/255.f alpha:1.f];
   lineSeriesStyle.areaColor = [UIColor colorWithRed:48.f/255.f green:104.f/255.f blue:18.f/255.f alpha:0.9f];
   lineSeriesStyle.areaColorLowGradient = [UIColor colorWithRed:92.f/255.f green:160.f/255.f blue:56.f/255.f alpha:0.7f];
@@ -121,7 +121,7 @@ static float const MinYAxisRange = 5;
 }
 
 - (void)createPeakAnnotations {
-  self.peakAnnotations = [NSMutableArray array];
+  NSMutableArray *peakAnnotations = [NSMutableArray array];
   for (TDFPeak *peak in [self.dataSource getPeaks])    {
     TDFPeakAnnotation *peakAnnotation = [[TDFPeakAnnotation alloc] init];
     peakAnnotation.xAxis = self.chart.xAxis;
@@ -132,12 +132,13 @@ static float const MinYAxisRange = 5;
     peakAnnotation.yValue = @(peak.elevation);
     
     [self.chart addAnnotation:peakAnnotation];
-    [self.peakAnnotations addObject:peakAnnotation];
+    [peakAnnotations addObject:peakAnnotation];
   }
+  self.peakAnnotations = [peakAnnotations copy];
 }
 
 - (void)createStageAnnotations {
-  self.stageAnnotations = [[NSMutableArray alloc] init];
+  NSMutableArray *stageAnnotations = [[NSMutableArray alloc] init];
   
   // Loop through the stages and add the annotations
   for(int i = 0; i < [self.dataSource numberOfStages]; i++) {
@@ -149,12 +150,13 @@ static float const MinYAxisRange = 5;
     signAnnotation.xValue = [self.dataSource startDistanceForStageAtIndex:i];
     signAnnotation.yValue = [self.dataSource startElevationForStageAtIndex:i];
     
-    [self.stageAnnotations addObject:signAnnotation];
+    [stageAnnotations addObject:signAnnotation];
     [self.chart addAnnotation:signAnnotation];
   }
+  self.stageAnnotations = [stageAnnotations copy];
 }
 
-- (void)modifyAnnotationsIfNeeded: (int)currentXAxisSpan currentDetailLevel: (DetailLevel)detailLevel {
+- (void)modifyAnnotationsIfNeeded:(int)currentXAxisSpan currentDetailLevel:(DetailLevel)detailLevel {
   DetailLevel expectedDetailLevel = [self expectedDetailLevelForXAxisSpan:currentXAxisSpan];
   if (detailLevel != expectedDetailLevel) {
     for (TDFSignAnnotation *annotation in self.stageAnnotations) {
@@ -163,7 +165,7 @@ static float const MinYAxisRange = 5;
   }
 }
 
-- (void)modifyPeakAnnotationsIfNeeded: (int)currentXAxisSpan {
+- (void)modifyPeakAnnotationsIfNeeded:(int)currentXAxisSpan {
   TDFPeakAnnotation *firstAnnotation = self.peakAnnotations[0];
   BOOL showingPeaks = firstAnnotation.show;
   BOOL shouldShowPeaks = (currentXAxisSpan <= self.stageNameAxisSpanBoundary);
@@ -174,7 +176,7 @@ static float const MinYAxisRange = 5;
   }
 }
 
-- (DetailLevel)expectedDetailLevelForXAxisSpan: (int)xAxisSpan {
+- (DetailLevel)expectedDetailLevelForXAxisSpan:(int)xAxisSpan {
   if (xAxisSpan > self.stageNumberAxisSpanBoundary)    {
     return Nothing;
   } else if (xAxisSpan > self.stageNameAxisSpanBoundary)  {
@@ -192,8 +194,8 @@ static float const MinYAxisRange = 5;
     NSNumber *min = axis.axisRange.minimum;
     float center = [min floatValue] + ([axisSpan floatValue] / 2);
     
-    NSNumber *newMin = [NSNumber numberWithFloat:center - (range / 2)];
-    NSNumber *newMax = [NSNumber numberWithFloat:center + (range / 2)];
+    NSNumber *newMin = @(center - (range / 2));
+    NSNumber *newMax = @(center + (range / 2));
     
     [axis setRangeWithMinimum:newMin andMaximum:newMax];
     [self.chart redrawChart];

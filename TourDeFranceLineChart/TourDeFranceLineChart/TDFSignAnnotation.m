@@ -190,23 +190,7 @@ static float const SmallFontSize = 14.f;
   switch (self.detailLevel) {
     case Nothing: {
       // Set the alpha of the annotation to 0.  If we're animating, do this within an animation block
-      if (fade)    {
-        [UIView animateWithDuration:0.2
-                              delay:0.0 
-                            options:UIViewAnimationOptionCurveEaseIn
-                         animations:^{
-                            self.alpha = 0.f;
-                         }
-                         completion:^(BOOL finished){
-                           // If we should no longer be in this state once the animation is done, force a redraw
-                           if (self.detailLevel != Nothing)    {
-                              [self redrawWithAnimation:NO];
-                           }
-                         }];
-      } else {
-        self.alpha = 0.f;
-      }
-      
+      [self drawChanges:^{self.alpha = 0.f;} animate:fade];
       break;
     }
     case StageNumber: {
@@ -214,54 +198,42 @@ static float const SmallFontSize = 14.f;
         self.alpha = 0.f;
       }
       
-      [UIView animateWithDuration:0.2
-                            delay:0.0 
-                          options:UIViewAnimationOptionCurveEaseIn
-                       animations:^{
-                         [self drawStageNumberSign:YES];
-                         self.alpha = 1.f;
-                       }
-                       completion:^(BOOL finished){
-                         // If we should no longer be in this state once the animation is done, force a redraw
-                         if (self.detailLevel != StageNumber) {
-                           [self redrawWithAnimation:NO];
-                         }
-                       }];
+      [self drawChanges:^{
+        [self drawStageNumberSign:YES];
+        self.alpha = 1.f;
+      } animate:fade];
+      
       break;
     }
     case StageName: {
-      [UIView animateWithDuration:0.2
-                            delay:0.0 
-                          options:UIViewAnimationOptionCurveEaseIn
-                       animations:^{
-                         [self drawStageNumberSign:NO];
-                       }
-                       completion:^(BOOL finished){
-                         // If we should no longer be in this state once the animation is done, force a redraw
-                         if (self.detailLevel != StageName)    {
-                            [self redrawWithAnimation:NO];
-                         }
-                       }];
+      [self drawChanges:^{[self drawStageNumberSign:NO];} animate:fade];
       break;
     }
     case Details: {
-      [UIView animateWithDuration:0.2
-                            delay:0.0 
-                          options:UIViewAnimationOptionCurveEaseIn
-                       animations:^{
-                         [self drawStageDetailsSign];
-                       }
-                       completion:^(BOOL finished){
-                         // If we should no longer be in this state once the animation is done, force a redraw
-                         if (self.detailLevel != Details)    {
-                           [self redrawWithAnimation:NO];
-                         }
-                       }];
+      [self drawChanges:^{[self drawStageDetailsSign];} animate:fade];
       break;
     }
     default: {
       break;
     }
+  }
+}
+
+- (void)drawChanges:(void (^)(void))changes animate:(BOOL)animate {
+  if (animate) {
+    DetailLevel currentLevel = self.detailLevel;
+    [UIView animateWithDuration:0.2
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:changes
+                     completion:^(BOOL finished){
+                       // If the detail level has changed during the animation, force a redraw
+                       if (self.detailLevel != currentLevel) {
+                         [self redrawWithAnimation:NO];
+                       }
+                     }];
+  } else {
+    changes();
   }
 }
 

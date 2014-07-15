@@ -11,7 +11,7 @@
 @interface TDFPeakAnnotation : SChartAnnotation
 
 @property (nonatomic, strong) NSString* name;
-@property (nonatomic, assign) float elevation;
+@property (nonatomic, assign) CGFloat elevation;
 @property (nonatomic, assign) BOOL show;
 
 @end

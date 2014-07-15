@@ -63,31 +63,25 @@
 #pragma mark Datasource Protocol Functions
 
 // Returns the number of points for a specific series in the specified chart
-- (int)sChart:(ShinobiChart *)chart numberOfDataPointsForSeriesAtIndex:(int)seriesIndex {
+- (NSInteger)sChart:(ShinobiChart *)chart numberOfDataPointsForSeriesAtIndex:(NSInteger)seriesIndex {
   return [self.chartData numberOfDataPoints];
 }
 
 // Returns the series at the specified index for a given chart
--(SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(int)index {
+- (SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(NSInteger)index {
   SChartLineSeries *lineSeries = [[SChartLineSeries alloc] init];
   lineSeries.baseline = @0;    
   lineSeries.crosshairEnabled = YES;
-  /*lineSeries.style.showFill = YES;
-  lineSeries.style.lineColor = [UIColor colorWithRed:48.f/255.f green:104.f/255.f blue:18.f/255.f alpha:1.f];
-  lineSeries.style.areaLineColor = lineSeries.style.lineColor;
-  lineSeries.style.areaColor = [UIColor colorWithRed:48.f/255.f green:104.f/255.f blue:18.f/255.f alpha:0.9f];
-  lineSeries.style.areaColorLowGradient = [UIColor colorWithRed:92.f/255.f green:160.f/255.f blue:56.f/255.f alpha:0.7f];
-  */
   return lineSeries;
 }
 
 // Returns the number of series in the specified chart
-- (int)numberOfSeriesInSChart:(ShinobiChart *)chart {
+- (NSInteger)numberOfSeriesInSChart:(ShinobiChart *)chart {
   return 1;
 }
 
 // Returns the data point at the specified index for the given series/chart.
-- (id<SChartData>)sChart:(ShinobiChart *)chart dataPointAtIndex:(int)dataIndex forSeriesAtIndex:(int)seriesIndex {
+- (id<SChartData>)sChart:(ShinobiChart *)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex {
     
   // Construct a data point to return
   SChartDataPoint *datapoint = [[SChartDataPoint alloc] init];
@@ -98,7 +92,7 @@
   return datapoint;
 }
 
-- (NSArray *)sChart:(ShinobiChart *)chart dataPointsForSeriesAtIndex:(int)seriesIndex {
+- (NSArray *)sChart:(ShinobiChart *)chart dataPointsForSeriesAtIndex:(NSInteger)seriesIndex {
   NSMutableArray *datapoints = [NSMutableArray array];
   for(int i=0; i<[self sChart:chart numberOfDataPointsForSeriesAtIndex:seriesIndex]; i++) {
     SChartDataPoint *datapoint = [[SChartDataPoint alloc] init];
@@ -107,7 +101,7 @@
     datapoint.yValue = [self.chartData getElevationAtIndex:i];
     [datapoints addObject:datapoint];
   }
-  return datapoints;
+  return [datapoints copy];
 }
 
 @end

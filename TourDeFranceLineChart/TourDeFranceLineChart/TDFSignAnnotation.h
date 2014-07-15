@@ -9,12 +9,12 @@
 #import <ShinobiCharts/ShinobiChart.h>
 #import "TDFSignArrowView.h"
 
-typedef enum {
+typedef NS_ENUM(NSInteger, DetailLevel) {
   Nothing,
   StageNumber,
   StageName,
   Details
-} DetailLevel;
+};
 
 @interface TDFSignAnnotation : SChartAnnotation
 
@@ -24,6 +24,6 @@ typedef enum {
 @property (nonatomic, assign) float distance;
 @property (nonatomic, assign) DetailLevel detailLevel;
 
-- (id)initWithStageNumber:(NSUInteger)stageNumber startName:(NSString*)startName endName:(NSString*)endName distance:(float)distance;
+- (instancetype)initWithStageNumber:(NSUInteger)stageNumber startName:(NSString*)startName endName:(NSString*)endName distance:(float)distance;
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Scott Logic. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import UIKit;
 
 @interface TDFSignArrowView : UIView
 

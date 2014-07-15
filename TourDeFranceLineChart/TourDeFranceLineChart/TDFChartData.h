@@ -10,9 +10,9 @@
 
 @interface TDFChartData : NSObject
 
-@property (nonatomic, strong) NSMutableArray *peakData;
+@property (nonatomic, strong) NSArray *peakData;
 
-+ (TDFChartData*)getInstance;
++ (instancetype) getInstance;
 
 - (NSUInteger)numberOfDataPoints;
 - (NSNumber *)getDistanceAtIndex:(NSUInteger)idx;
@@ -21,6 +21,6 @@
 - (NSUInteger)numberOfStages;
 - (NSArray *)stageNames;
 - (NSArray *)stageStartAndEndPoints;
-- (NSArray*)stageStartElevations;
+- (NSArray *)stageStartElevations;
 
 @end

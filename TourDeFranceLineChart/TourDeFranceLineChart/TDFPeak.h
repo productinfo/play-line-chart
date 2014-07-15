@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 Scott Logic. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface TDFPeak : NSObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, assign) float elevation;
-@property (nonatomic, assign) float distanceAlongRoute;
+@property (nonatomic, assign) CGFloat elevation;
+@property (nonatomic, assign) CGFloat distanceAlongRoute;
 
 @end

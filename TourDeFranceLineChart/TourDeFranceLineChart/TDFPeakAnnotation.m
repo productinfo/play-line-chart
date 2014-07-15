@@ -19,7 +19,7 @@ static float const FontSize = 14.f;
 
 @implementation TDFPeakAnnotation
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
   
   if (self) {
@@ -78,7 +78,7 @@ static float const FontSize = 14.f;
     self.frame = CGRectMake(nameLabelOrigin.x, nameLabelOrigin.y, largerWidth, nameLabelSize.height + elevationLabelSize.height);
 }
 
--(void)updateViewWithCanvas:(SChartCanvas *)canvas  {
+- (void)updateViewWithCanvas:(SChartCanvas *)canvas  {
     [super updateViewWithCanvas:canvas];
     
     // Move the annotation up slightly so the text is slightly above the peak rather than touching the peak
@@ -90,7 +90,7 @@ static float const FontSize = 14.f;
     [self redraw:show];
 }
 
-- (void)redraw: (BOOL)show  {
+- (void)redraw:(BOOL)show  {
     float endingAlpha = 0.f;
     if (show) {
         endingAlpha = 1.f;
