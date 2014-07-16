@@ -15,11 +15,19 @@ static float const FrameWidthPadding = 10.f;
 static float const LargeFontSize = 16.f;
 static float const SmallFontSize = 14.f;
 
+typedef NS_ENUM(NSInteger, AnimationType) {
+  None,
+  Fade,
+  Resize
+};
+
 @interface TDFSignAnnotation()
 
 @property (nonatomic, strong) UIColor *fillColour;
 @property (nonatomic, strong) UIView *signpostView;
 @property (nonatomic, strong) UIView *signView;
+@property (nonatomic, strong) UILabel *stageLabel;
+@property (nonatomic, strong) UILabel *detailsLabel;
 @property (nonatomic, strong) TDFSignArrowView *signArrowView;
 
 @end
@@ -47,6 +55,17 @@ static float const SmallFontSize = 14.f;
     self.signView.backgroundColor = self.fillColour;
     [self addSubview:self.signView];
     
+    self.stageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.stageLabel.backgroundColor = [UIColor clearColor];
+    self.stageLabel.textColor = [UIColor whiteColor];
+    [self.signView addSubview:self.stageLabel];
+    
+    self.detailsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    self.detailsLabel.backgroundColor = [UIColor clearColor];
+    self.detailsLabel.textColor = [UIColor whiteColor];
+    self.detailsLabel.font = [UIFont systemFontOfSize:SmallFontSize];
+    [self.signView addSubview:self.detailsLabel];
+    
     self.signArrowView = [[TDFSignArrowView alloc] initWithFrame:CGRectZero];
     self.signArrowView.backgroundColor = [UIColor clearColor];
     [self addSubview:self.signArrowView];
@@ -55,185 +74,192 @@ static float const SmallFontSize = 14.f;
   return self;
 }
 
-// Draws a sign showing the stage number, either as "Stage X" or as "X"
-- (void)drawStageNumberSign:(BOOL)justNumber {
-  // Remove any existing labels from the sign
-  for (UIView *subview in self.signView.subviews)  {
-    [subview removeFromSuperview];
-  }
-  
-  // Resize the annotation 
-  CGRect frame;
-  if (justNumber) {
-    frame = CGRectMake(0, 0, SmallFrameSize.width, SmallFrameSize.height);
-  } else {
-    frame = CGRectMake(0, 0, MediumFrameSize.width, MediumFrameSize.height);
-  }
-  self.frame = frame;
-  
-  // Draw the label containing the stage number
-  UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-  if (justNumber) {
-    label.text = [NSString stringWithFormat:@"%d", self.stageNumber];
-    label.font = [UIFont systemFontOfSize:SmallFontSize];
-  } else {
-    if (self.stageNumber == 0)   {
-      label.text = @"Prologue";
-    } else {
-      label.text = [NSString stringWithFormat:@"Stage %d", self.stageNumber];
-    }
-    label.font = [UIFont systemFontOfSize:LargeFontSize];
-  }
-  label.backgroundColor = [UIColor clearColor];
-  label.textColor = [UIColor whiteColor];
-  [label sizeToFit];
-  
-  // Resize the sign view to contain the label
-  CGRect signViewFrame = self.signView.frame;
-  // If we're just showing a number, set the sign view to have a constant frame width,
-  // regardless of the width of the label
-  if (justNumber) {
-    signViewFrame.size.width = self.frame.size.width / 2.f;
-  } else {
-    signViewFrame.size.width = label.frame.size.width + 2*FrameWidthPadding;
-  }
-  signViewFrame.size.height = label.frame.size.height * 1.2f;
-  self.signView.frame = signViewFrame;
-  
-  // Now add the number label to the sign view, and reposition it
-  [self.signView addSubview:label];
-  CGRect numberLabelFrame = label.frame;
-  numberLabelFrame.origin.x = signViewFrame.size.width / 2 - numberLabelFrame.size.width / 2;
-  numberLabelFrame.origin.y = signViewFrame.size.height / 2 - numberLabelFrame.size.height / 2;
-  label.frame = numberLabelFrame;
-  
-  // Resize and reposition the arrowhead to the right of the sign
-  self.signArrowView.frame = CGRectMake(signViewFrame.size.width,
-                                        0.f,
-                                        signViewFrame.size.height * 0.6,
-                                        signViewFrame.size.height);
-}
-
-// Draw a sign with the full details of the stage
-- (void)drawStageDetailsSign {
-  // Remove any existing labels from the sign
-  for (UIView *subview in self.signView.subviews)  {
-    [subview removeFromSuperview];
-  }
-  
-  // Resize the annotation
-  CGRect frame = CGRectMake(0, 0, LargeFrameSize.width, LargeFrameSize.height);
-  self.frame = frame;
-  
-  NSString *stageName;
-  if (self.stageNumber == 0) {
-    stageName = @"Prologue";
-  } else {
-    stageName = [NSString stringWithFormat:@"Stage %d", self.stageNumber];
-  }
-  
-  // Draw the label containing the stage number and distance
-  UILabel *stageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-  stageLabel.text = [NSString stringWithFormat:@"%@ - %.0fkm", stageName, self.distance];
-  stageLabel.font = [UIFont systemFontOfSize:LargeFontSize];
-  stageLabel.backgroundColor = [UIColor clearColor];
-  stageLabel.textColor = [UIColor whiteColor];
-  [stageLabel sizeToFit];
-  
-  // Draw a label showing the start and end point of the stage
-  UILabel *startToEndLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-  startToEndLabel.text = [NSString stringWithFormat:@"%@ to %@", self.startName, self.endName];
-  startToEndLabel.font = [UIFont systemFontOfSize:SmallFontSize];
-  startToEndLabel.backgroundColor = [UIColor clearColor];
-  startToEndLabel.textColor = [UIColor whiteColor];
-  [startToEndLabel sizeToFit];
-  
-  // Calculate which label is wider.  We will use the wider width to resize the sign view
-  NSUInteger maxLabelWidth = stageLabel.frame.size.width;
-  if (startToEndLabel.frame.size.width > maxLabelWidth) {
-    maxLabelWidth = startToEndLabel.frame.size.width;
-  }
-  
-  // Resize the sign view to contain the labels
-  CGRect signViewFrame = self.signView.frame;
-  signViewFrame.size.width = maxLabelWidth + 2*FrameWidthPadding;
-  signViewFrame.size.height = (stageLabel.frame.size.height + startToEndLabel.frame.size.height) * 1.2f;
-  self.signView.frame = signViewFrame;
-  
-  // Now add the labels to the sign view, and position them
-  [self.signView addSubview:stageLabel];
-  [self.signView addSubview:startToEndLabel];
-  
-  CGRect stageLabelFrame = stageLabel.frame;
-  stageLabelFrame.origin.x = FrameWidthPadding;
-  stageLabelFrame.origin.y = signViewFrame.size.height / 2 -
-                              ((stageLabelFrame.size.height + startToEndLabel.frame.size.height) / 2);
-  stageLabel.frame = stageLabelFrame;
-  
-  CGRect startToEndFrame = startToEndLabel.frame;
-  startToEndFrame.origin.x = stageLabelFrame.origin.x;
-  startToEndFrame.origin.y = stageLabelFrame.origin.y + stageLabelFrame.size.height;
-  startToEndLabel.frame = startToEndFrame;
-  
-  // Resize and reposition the arrowhead
-  self.signArrowView.frame = CGRectMake(signViewFrame.size.width,
-                                        0.f,
-                                        signViewFrame.size.height * 0.75f,
-                                        signViewFrame.size.height);
-}
-
-- (void)redrawWithAnimation:(BOOL)fade {
-    
-  // It is possible that previous renders set alpha to 0.  Reset it here
-  self.alpha = 1.0f;
+// Works out the size of the new sign frame based on the given text
+- (CGRect)calculateNewSignFrameForStageText:(NSString *)stageText detailsText:(NSString *)detailsText {
+  CGSize stageTextSize;
   
   switch (self.detailLevel) {
-    case Nothing: {
-      // Set the alpha of the annotation to 0.  If we're animating, do this within an animation block
-      [self drawChanges:^{self.alpha = 0.f;} animate:fade];
-      break;
-    }
-    case StageNumber: {
-      if (fade) {
-        self.alpha = 0.f;
-      }
+    case Nothing:
+      // No sign, so we want an empty frame
+      return CGRectZero;
       
-      [self drawChanges:^{
-        [self drawStageNumberSign:YES];
-        self.alpha = 1.f;
-      } animate:fade];
+    case StageNumber:
+      // Fix the width, so the flags are all the same width, but use the text height
+      stageTextSize = [stageText sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:SmallFontSize]}];
+      return CGRectMake(0, 0, SmallFrameSize.width/2, stageTextSize.height * 1.2f);
       
-      break;
-    }
-    case StageName: {
-      [self drawChanges:^{[self drawStageNumberSign:NO];} animate:fade];
-      break;
-    }
-    case Details: {
-      [self drawChanges:^{[self drawStageDetailsSign];} animate:fade];
-      break;
-    }
-    default: {
-      break;
-    }
+    case StageName:
+      // Just size based on the stage text size plus some padding
+      stageTextSize = [stageText sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LargeFontSize]}];
+      return CGRectMake(0, 0, stageTextSize.width + 2*FrameWidthPadding, stageTextSize.height * 1.2f);
+      
+    case Details:
+      // Size based on both stage text size and details text size: max of the widths, and total height (plus padding)
+      stageTextSize = [stageText sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LargeFontSize]}];
+      CGSize detailsTextSize = [detailsText sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:SmallFontSize]}];
+      CGFloat width = MAX(stageTextSize.width, detailsTextSize.width) + 2*FrameWidthPadding;
+      return CGRectMake(0, 0, width, (stageTextSize.height + detailsTextSize.height) * 1.2f);
   }
 }
 
-- (void)drawChanges:(void (^)(void))changes animate:(BOOL)animate {
-  if (animate) {
+- (NSString *)getNewStageText {
+  switch (self.detailLevel) {
+    case Nothing:
+      return @"";
+    case StageNumber:
+      return [NSString stringWithFormat:@"%d", self.stageNumber];
+    case StageName:
+      if (self.stageNumber == 0) {
+        return @"Prologue";
+      } else {
+        return [NSString stringWithFormat:@"Stage %d", self.stageNumber];
+      }
+    case Details:
+      if (self.stageNumber == 0) {
+        return @"Prologue";
+      } else {
+        return [NSString stringWithFormat:@"Stage %d - %.0fkm", self.stageNumber, self.distance];
+      }
+  }
+}
+
+- (NSString *)getNewDetailsText {
+  if (self.detailLevel == Details) {
+    return [NSString stringWithFormat:@"%@ to %@", self.startName, self.endName];
+  }
+  
+  return @"";
+}
+
+// Updates the labels' text and frames
+- (void)updateLabelsWithStageText:(NSString *)stageText detailsText:(NSString *)detailsText
+                      detailLevel:(DetailLevel)detailLevel {
+  self.stageLabel.text = stageText;
+  self.stageLabel.font = (detailLevel == StageNumber) ? [UIFont systemFontOfSize:SmallFontSize]
+                                                      : [UIFont systemFontOfSize:LargeFontSize];
+  [self.stageLabel sizeToFit];
+  
+  self.detailsLabel.text = detailsText;
+  if (self.detailLevel == Details) {
+    [self.detailsLabel sizeToFit];
+  } else {
+    self.detailsLabel.frame = CGRectZero;
+  }
+  
+  CGRect stageLabelFrame = self.stageLabel.frame;
+  stageLabelFrame.origin.x = FrameWidthPadding;
+  stageLabelFrame.origin.y = self.signView.frame.size.height / 2 -
+    ((stageLabelFrame.size.height + self.detailsLabel.frame.size.height) / 2);
+  self.stageLabel.frame = stageLabelFrame;
+  
+  CGRect detailsLabelFrame = self.detailsLabel.frame;
+  detailsLabelFrame.origin.x = stageLabelFrame.origin.x;
+  detailsLabelFrame.origin.y = stageLabelFrame.origin.y + stageLabelFrame.size.height;
+  self.detailsLabel.frame = detailsLabelFrame;
+}
+
+- (void)updateFrames:(CGRect)newSignFrame detailLevel:(DetailLevel)detailLevel {
+  self.signView.frame = newSignFrame;
+  
+  // Size main frame based on detail level
+  CGSize newFrameSize;
+  switch (detailLevel) {
+    case Nothing:
+      newFrameSize = CGSizeZero;
+      break;
+    case StageNumber:
+      newFrameSize = SmallFrameSize;
+      break;
+    case StageName:
+      newFrameSize = MediumFrameSize;
+      break;
+    case Details:
+      newFrameSize = LargeFrameSize;
+  }
+  self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y,
+                          newFrameSize.width, newFrameSize.height);
+  
+  // Resize and reposition the arrowhead to the right of the sign
+  self.signArrowView.frame = CGRectMake(newSignFrame.size.width,
+                                        0.f,
+                                        newSignFrame.size.height * 0.6,
+                                        newSignFrame.size.height);
+}
+
+- (void)redrawWithAnimationType:(AnimationType)animationType {
+  NSString *stageText = [self getNewStageText];
+  NSString *detailsText = [self getNewDetailsText];
+  CGRect newSignFrame = [self calculateNewSignFrameForStageText:stageText detailsText:detailsText];
+  
+  if (animationType == Fade) {
     DetailLevel currentLevel = self.detailLevel;
-    [UIView animateWithDuration:0.2
+    if (currentLevel == Nothing) {
+      // Fading to Nothing: simply animate alpha to 0
+      [UIView animateWithDuration:0.4
+                            delay:0.0
+                          options:UIViewAnimationOptionCurveEaseIn
+                       animations:^{
+                         self.alpha = 0.f;
+                       }
+                       completion:nil];
+    } else {
+      // Fading from nothing to a new label
+      // First update the frames and labels
+      [self updateFrames:newSignFrame detailLevel:currentLevel];
+      [self updateLabelsWithStageText:stageText detailsText:detailsText detailLevel:currentLevel];
+      // Now animate alpha to 1
+      [UIView animateWithDuration:0.4
+                            delay:0.0
+                          options:UIViewAnimationOptionCurveEaseIn
+                       animations:^{
+                         self.alpha = 1.f;
+                       }
+                       completion:nil];
+    }
+  } else if (animationType == Resize) {
+    // Make sure we're visible
+    self.alpha = 1.f;
+    
+    DetailLevel currentLevel = self.detailLevel;
+    
+    // Animation 1/3: fade out the text labels
+    [UIView animateWithDuration:0.1
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
-                     animations:changes
+                     animations:^{
+                       self.stageLabel.alpha = 0.f;
+                       self.detailsLabel.alpha = 0.f;
+                     }
                      completion:^(BOOL finished){
-                       // If the detail level has changed during the animation, force a redraw
-                       if (self.detailLevel != currentLevel) {
-                         [self redrawWithAnimation:NO];
-                       }
+                       // Animation 2/3: resize the sign
+                       [UIView animateWithDuration:0.2
+                                             delay:0.0
+                                           options:UIViewAnimationOptionCurveEaseIn
+                                        animations:^{
+                                          [self updateFrames:newSignFrame detailLevel:currentLevel];
+                                        }
+                                        completion:^(BOOL finished) {
+                                          // Update the labels
+                                          [self updateLabelsWithStageText:stageText
+                                                              detailsText:detailsText
+                                                              detailLevel:currentLevel];
+                                          
+                                          // Animation 3/3: fade the updated label text back in
+                                          [UIView animateWithDuration:0.1
+                                                                delay:0.0
+                                                              options:UIViewAnimationOptionCurveEaseIn
+                                                           animations:^{
+                                                             self.stageLabel.alpha = 1.f;
+                                                             self.detailsLabel.alpha = 1.f;
+                                                           }
+                                                           completion:nil];
+                                        }];
                      }];
   } else {
-    changes();
+    // No animations; just make sure we're visible and update the frames and the text
+    self.alpha = 1.f;
+    [self updateFrames:newSignFrame detailLevel:self.detailLevel];
+    [self updateLabelsWithStageText:stageText detailsText:detailsText detailLevel:self.detailLevel];
   }
 }
 
@@ -241,13 +267,16 @@ static float const SmallFontSize = 14.f;
   DetailLevel oldDetailLevel = _detailLevel;
   _detailLevel = detailLevel;
   
-  // We only animate if we are going from a state where annotations aren't shown to showing stage numbers
-  BOOL fade = NO;
-  if ((self.detailLevel == StageNumber && oldDetailLevel == Nothing) || (self.detailLevel == Nothing && oldDetailLevel == StageNumber))    {
-    fade = YES;
+  AnimationType animationType = Resize;
+  if (CGRectIsEmpty(self.frame)) {
+    // Don't animate if it's the first time we've been drawn
+    animationType = None;
+  } else if (oldDetailLevel == Nothing || self.detailLevel == Nothing)    {
+    // Use fade not resize if we're switching to/from a detailLevel of Nothing
+    animationType = Fade;
   }
   
-  [self redrawWithAnimation:fade];
+  [self redrawWithAnimationType:animationType];
 }
 
 -(void)updateViewWithCanvas:(SChartCanvas *)canvas {
