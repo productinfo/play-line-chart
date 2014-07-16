@@ -34,8 +34,8 @@ typedef NS_ENUM(NSInteger, AnimationType) {
 
 @implementation TDFSignAnnotation
 
-- (instancetype)initWithStageNumber: (unsigned int)stageNumber startName:(NSString*)startName
-                            endName: (NSString*)endName distance:(float)distance   {
+- (instancetype)initWithStageNumber: (NSUInteger)stageNumber startName:(NSString*)startName
+                            endName: (NSString*)endName distance:(CGFloat)distance   {
   self = [super initWithFrame:CGRectZero];
   
   if (self) {
@@ -107,18 +107,18 @@ typedef NS_ENUM(NSInteger, AnimationType) {
     case Nothing:
       return @"";
     case StageNumber:
-      return [NSString stringWithFormat:@"%d", self.stageNumber];
+      return [NSString stringWithFormat:@"%lu", (unsigned long)self.stageNumber];
     case StageName:
       if (self.stageNumber == 0) {
         return @"Prologue";
       } else {
-        return [NSString stringWithFormat:@"Stage %d", self.stageNumber];
+        return [NSString stringWithFormat:@"Stage %lu", (unsigned long)self.stageNumber];
       }
     case Details:
       if (self.stageNumber == 0) {
         return @"Prologue";
       } else {
-        return [NSString stringWithFormat:@"Stage %d - %.0fkm", self.stageNumber, self.distance];
+        return [NSString stringWithFormat:@"Stage %lu - %.0fkm", (unsigned long)self.stageNumber, self.distance];
       }
   }
 }

@@ -55,7 +55,7 @@ static float const FontSize = 14.f;
     [self updateFrames];
 }
 
-- (void)setElevation:(float)elevation   {
+- (void)setElevation:(CGFloat)elevation   {
     _elevation = elevation;
     
     self.elevationLabel.text = [NSString stringWithFormat:@"%.0f m", elevation];

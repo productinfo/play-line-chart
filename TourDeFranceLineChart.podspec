@@ -6,7 +6,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = "TourDeFranceLineChart"
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = "A line chart demo."
   s.description      = <<-DESC
                        A line chart for the featured gallery
@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '7.0'
   s.requires_arc = true
   s.source_files = 'TourDeFranceLineChart/TourDeFranceLineChart/**/*.{h,m}'
+  s.dependency 'ShinobiPlayUtils'
   s.resources = ['TourDeFranceLineChart/**/tdf*.plist']
   s.frameworks = 'QuartzCore', 'ShinobiCharts'
   s.xcconfig     = { 'FRAMEWORK_SEARCH_PATHS' => '"$(DEVELOPER_FRAMEWORKS_DIR)"' }

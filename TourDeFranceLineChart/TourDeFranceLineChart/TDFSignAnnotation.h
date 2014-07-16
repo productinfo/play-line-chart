@@ -21,9 +21,9 @@ typedef NS_ENUM(NSInteger, DetailLevel) {
 @property (nonatomic, assign) NSUInteger stageNumber;
 @property (nonatomic, strong) NSString *startName;
 @property (nonatomic, strong) NSString *endName;
-@property (nonatomic, assign) float distance;
+@property (nonatomic, assign) CGFloat distance;
 @property (nonatomic, assign) DetailLevel detailLevel;
 
-- (instancetype)initWithStageNumber:(NSUInteger)stageNumber startName:(NSString*)startName endName:(NSString*)endName distance:(float)distance;
+- (instancetype)initWithStageNumber:(NSUInteger)stageNumber startName:(NSString*)startName endName:(NSString*)endName distance:(CGFloat)distance;
 
 @end
