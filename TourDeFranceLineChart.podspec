@@ -25,5 +25,5 @@ Pod::Spec.new do |s|
   s.dependency 'ShinobiPlayUtils'
   s.resources = ['TourDeFranceLineChart/**/tdf*.plist']
   s.frameworks = 'QuartzCore', 'ShinobiCharts'
-  s.xcconfig     = { 'FRAMEWORK_SEARCH_PATHS' => '"$(DEVELOPER_FRAMEWORKS_DIR)" "$(PWD)"' }
+  s.xcconfig     = { 'FRAMEWORK_SEARCH_PATHS' => '"$(DEVELOPER_FRAMEWORKS_DIR)" "$(PROJECT_DIR)"' }
 end
