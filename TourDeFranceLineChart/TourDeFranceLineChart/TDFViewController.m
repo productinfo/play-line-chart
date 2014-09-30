@@ -18,8 +18,6 @@ static float const MinYAxisRange = 5;
 
 @interface TDFViewController ()
 
-@property (nonatomic, strong) ShinobiChart *chart;
-@property (nonatomic, strong) TDFDataSource *dataSource;
 @property (nonatomic, strong) NSArray *stageAnnotations;
 @property (nonatomic, strong) NSArray *peakAnnotations;
 
@@ -33,29 +31,30 @@ static float const MinYAxisRange = 5;
 @implementation TDFViewController
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  self.view.backgroundColor = [SChartiOS7Theme new].chartStyle.backgroundColor;
-  [self createChart];
-}
-
-- (void)createChart {
-  // Set the initial value of lastXAxisSpan to an arbitrary large value.  It will be updated each time we zoom
+  // Set the initial value of lastXAxisSpan to an arbitrary large value.  It will be updated
+  // each time we zoom
   self.lastXAxisSpan = 1000000;
   
   self.stageNumberAxisSpanBoundary = 1000;
   self.stageNameAxisSpanBoundary = 500;
   self.detailsAxisSpanBoundary = 100;
   
-  // Create the chart
+  [super viewDidLoad];
+  
+  self.view.backgroundColor = [SChartiOS7Theme new].chartStyle.backgroundColor;
+}
+
+- (void)createChart {
   self.chart = [[ShinobiChart alloc] initWithFrame:CGRectInset(self.view.bounds, 20, 30)];
-  self.chart.title = @"Tour de France 2012";
-  
-  // Initialise the data source we will use for the chart
+}
+
+- (void)createDataSource {
   self.dataSource = [[TDFDataSource alloc] init];
-  
-  // Give the chart the data source
-  self.chart.datasource = self.dataSource;
-  self.chart.delegate = self;
+}
+
+- (void)setupChart {
+  self.chart.title = @"Tour de France 2012";
+  self.chart.clipsToBounds = NO;
   
   // Create the x-axis
   SChartNumberRange *xRange = [[SChartNumberRange alloc] initWithMinimum:@2875 andMaximum:@2975];
@@ -70,7 +69,6 @@ static float const MinYAxisRange = 5;
   
   // Add a title
   xAxis.title = @"Distance (km)";
-  self.chart.clipsToBounds = NO;
   
   self.chart.xAxis = xAxis;
   
@@ -90,7 +88,6 @@ static float const MinYAxisRange = 5;
   // Add this title to the axis before we customise the label further
   self.chart.yAxis = yAxis;
   
-  
   // Set double tap in main chart to reset the zoom
   self.chart.gestureDoubleTapResetsZoom = YES;
   self.chart.gestureDoubleTapEnabled = YES;
@@ -109,20 +106,20 @@ static float const MinYAxisRange = 5;
   lineSeriesStyle.areaColorLowGradient = [UIColor colorWithRed:92.f/255.f green:160.f/255.f blue:56.f/255.f alpha:0.7f];
   [self.chart applyTheme:chartTheme];
   
-  // Add the chart to the view controller
-  [self.view addSubview:self.chart];
-  
+  self.chart.crosshair.tooltip = [[TDFCrosshairTooltip alloc] init];
+}
+
+- (void)setupAfterDataLoad {
   // Create some annotations
   [self createStageAnnotations];
   [self createPeakAnnotations];
   [self modifyAnnotationsIfNeeded:[self.chart.xAxis.axisRange.span intValue] currentDetailLevel:Nothing];
-  
-  self.chart.crosshair.tooltip = [[TDFCrosshairTooltip alloc] init];
+  [self modifyPeakAnnotations:[self.chart.xAxis.axisRange.span intValue] forceUpdate:YES];
 }
 
 - (void)createPeakAnnotations {
   NSMutableArray *peakAnnotations = [NSMutableArray array];
-  for (TDFPeak *peak in [self.dataSource getPeaks])    {
+  for (TDFPeak *peak in [(TDFDataSource *)self.dataSource getPeaks])    {
     TDFPeakAnnotation *peakAnnotation = [[TDFPeakAnnotation alloc] init];
     peakAnnotation.xAxis = self.chart.xAxis;
     peakAnnotation.yAxis = self.chart.yAxis;
@@ -139,16 +136,19 @@ static float const MinYAxisRange = 5;
 
 - (void)createStageAnnotations {
   NSMutableArray *stageAnnotations = [[NSMutableArray alloc] init];
+  TDFDataSource *tdfDataSource = (TDFDataSource *)self.dataSource;
   
   // Loop through the stages and add the annotations
-  for(int i = 0; i < [self.dataSource numberOfStages]; i++) {
+  for(int i = 0; i < [(TDFDataSource *)self.dataSource numberOfStages]; i++) {
     
-    float stageDistance = [[self.dataSource endDistanceForStageAtIndex:i] floatValue] - [[self.dataSource startDistanceForStageAtIndex:i] floatValue];
-    TDFSignAnnotation *signAnnotation = [[TDFSignAnnotation alloc] initWithStageNumber:i startName:[self.dataSource startNameForStageAtIndex:i] endName:[self.dataSource endNameForStageAtIndex:i] distance:stageDistance];
+    float stageDistance = [[tdfDataSource endDistanceForStageAtIndex:i] floatValue] - [[tdfDataSource startDistanceForStageAtIndex:i] floatValue];
+    TDFSignAnnotation *signAnnotation = [[TDFSignAnnotation alloc] initWithStageNumber:i
+                                                                             startName:[tdfDataSource startNameForStageAtIndex:i]
+                                                                               endName:[tdfDataSource endNameForStageAtIndex:i] distance:stageDistance];
     signAnnotation.xAxis = self.chart.xAxis;
     signAnnotation.yAxis = self.chart.yAxis;
-    signAnnotation.xValue = [self.dataSource startDistanceForStageAtIndex:i];
-    signAnnotation.yValue = [self.dataSource startElevationForStageAtIndex:i];
+    signAnnotation.xValue = [tdfDataSource startDistanceForStageAtIndex:i];
+    signAnnotation.yValue = [tdfDataSource startElevationForStageAtIndex:i];
     
     [stageAnnotations addObject:signAnnotation];
     [self.chart addAnnotation:signAnnotation];
@@ -166,10 +166,19 @@ static float const MinYAxisRange = 5;
 }
 
 - (void)modifyPeakAnnotationsIfNeeded:(int)currentXAxisSpan {
-  TDFPeakAnnotation *firstAnnotation = self.peakAnnotations[0];
-  BOOL showingPeaks = firstAnnotation.show;
+  [self modifyPeakAnnotations:currentXAxisSpan forceUpdate:NO];
+}
+
+- (void)modifyPeakAnnotations:(int)currentXAxisSpan forceUpdate:(BOOL)forceUpdate {
   BOOL shouldShowPeaks = (currentXAxisSpan <= self.stageNameAxisSpanBoundary);
-  if (shouldShowPeaks != showingPeaks)    {
+  BOOL needsUpdate = YES;
+  
+  if (!forceUpdate) {
+    TDFPeakAnnotation *firstAnnotation = self.peakAnnotations[0];
+    needsUpdate = firstAnnotation.show != shouldShowPeaks;
+  }
+  
+  if (needsUpdate) {
     for (TDFPeakAnnotation *annotation in self.peakAnnotations) {
       annotation.show = shouldShowPeaks;
     }
