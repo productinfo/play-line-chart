@@ -7,7 +7,7 @@
 //
 
 @import Foundation;
-#import <ShinobiCharts/ShinobiChart.h>
+#import <ShinobiCharts/ShinobiCharts.h>
 
 @interface TDFCrosshairTooltip : SChartCrosshairTooltip
 

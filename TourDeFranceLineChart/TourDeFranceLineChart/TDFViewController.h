@@ -7,7 +7,7 @@
 //
 
 @import UIKit;
-#import <ShinobiCharts/ShinobiChart.h>
+#import <ShinobiCharts/ShinobiCharts.h>
 #import "ShinobiPlayUtils/SPUGalleryManagedViewController.h"
 
 @interface TDFViewController : SPUGalleryManagedViewController<SChartDelegate>

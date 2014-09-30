@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Scott Logic. All rights reserved.
 //
 
-#import <ShinobiCharts/ShinobiChart.h>
+#import <ShinobiCharts/ShinobiCharts.h>
 
 @interface TDFPeakAnnotation : SChartAnnotation
 

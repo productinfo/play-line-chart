@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Scott Logic. All rights reserved.
 //
 
-#import <ShinobiCharts/ShinobiChart.h>
+#import <ShinobiCharts/ShinobiCharts.h>
 #import "TDFSignArrowView.h"
 
 typedef NS_ENUM(NSInteger, DetailLevel) {

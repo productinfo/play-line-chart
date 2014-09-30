@@ -7,7 +7,7 @@
 //
 
 @import Foundation;
-#import <ShinobiCharts/ShinobiChart.h>
+#import <ShinobiCharts/ShinobiCharts.h>
 #import "TDFChartData.h"
 
 @interface TDFDataSource : NSObject<SChartDatasource>
