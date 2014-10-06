@@ -30,6 +30,16 @@ static float const MinYAxisRange = 5;
 
 @implementation TDFViewController
 
+@synthesize dataSource = _dataSource;
+
+- (TDFDataSource *)dataSource {
+  return _dataSource;
+}
+
+- (void)setDataSource:(TDFDataSource *)ds {
+  _dataSource = ds;
+}
+
 - (void)viewDidLoad {
   // Set the initial value of lastXAxisSpan to an arbitrary large value.  It will be updated
   // each time we zoom
@@ -119,7 +129,7 @@ static float const MinYAxisRange = 5;
 
 - (void)createPeakAnnotations {
   NSMutableArray *peakAnnotations = [NSMutableArray array];
-  for (TDFPeak *peak in [(TDFDataSource *)self.dataSource getPeaks])    {
+  for (TDFPeak *peak in [self.dataSource getPeaks])    {
     TDFPeakAnnotation *peakAnnotation = [[TDFPeakAnnotation alloc] init];
     peakAnnotation.xAxis = self.chart.xAxis;
     peakAnnotation.yAxis = self.chart.yAxis;
@@ -136,19 +146,18 @@ static float const MinYAxisRange = 5;
 
 - (void)createStageAnnotations {
   NSMutableArray *stageAnnotations = [[NSMutableArray alloc] init];
-  TDFDataSource *tdfDataSource = (TDFDataSource *)self.dataSource;
   
   // Loop through the stages and add the annotations
-  for(int i = 0; i < [(TDFDataSource *)self.dataSource numberOfStages]; i++) {
+  for(int i = 0; i < [self.dataSource numberOfStages]; i++) {
     
-    float stageDistance = [[tdfDataSource endDistanceForStageAtIndex:i] floatValue] - [[tdfDataSource startDistanceForStageAtIndex:i] floatValue];
+    float stageDistance = [[self.dataSource endDistanceForStageAtIndex:i] floatValue] - [[self.dataSource startDistanceForStageAtIndex:i] floatValue];
     TDFSignAnnotation *signAnnotation = [[TDFSignAnnotation alloc] initWithStageNumber:i
-                                                                             startName:[tdfDataSource startNameForStageAtIndex:i]
-                                                                               endName:[tdfDataSource endNameForStageAtIndex:i] distance:stageDistance];
+                                                                             startName:[self.dataSource startNameForStageAtIndex:i]
+                                                                               endName:[self.dataSource endNameForStageAtIndex:i] distance:stageDistance];
     signAnnotation.xAxis = self.chart.xAxis;
     signAnnotation.yAxis = self.chart.yAxis;
-    signAnnotation.xValue = [tdfDataSource startDistanceForStageAtIndex:i];
-    signAnnotation.yValue = [tdfDataSource startElevationForStageAtIndex:i];
+    signAnnotation.xValue = [self.dataSource startDistanceForStageAtIndex:i];
+    signAnnotation.yValue = [self.dataSource startElevationForStageAtIndex:i];
     
     [stageAnnotations addObject:signAnnotation];
     [self.chart addAnnotation:signAnnotation];

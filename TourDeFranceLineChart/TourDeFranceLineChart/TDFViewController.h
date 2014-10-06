@@ -9,7 +9,10 @@
 @import UIKit;
 #import <ShinobiCharts/ShinobiCharts.h>
 #import "ShinobiPlayUtils/SPUGalleryManagedChartViewController.h"
+#import "TDFDataSource.h"
 
 @interface TDFViewController : SPUGalleryManagedChartViewController
+
+@property (nonatomic, strong) TDFDataSource *dataSource;
 
 @end
