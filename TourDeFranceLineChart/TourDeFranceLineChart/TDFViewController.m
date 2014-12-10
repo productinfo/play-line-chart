@@ -67,7 +67,7 @@ static float const MinYAxisRange = 5;
   self.chart.clipsToBounds = NO;
   
   // Create the x-axis
-  SChartNumberRange *xRange = [[SChartNumberRange alloc] initWithMinimum:@2900 andMaximum:@3000];
+  SChartNumberRange *xRange = [[SChartNumberRange alloc] initWithMinimum:@2905 andMaximum:@3005];
   SChartNumberAxis *xAxis = [[SChartNumberAxis alloc] initWithRange:xRange];
   
   // Enable panning and zooming on the x-axis.
