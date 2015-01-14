@@ -12,6 +12,8 @@
 #import "TDFSignAnnotation.h"
 #import "TDFPeak.h"
 #import "TDFCrosshairTooltip.h"
+#import "ShinobiPlayUtils/UIColor+SPUColor.h"
+#import "ShinobiPlayUtils/UIFont+SPUFont.h"
 
 static float const MinXAxisRange = 5;
 static float const MinYAxisRange = 5;
@@ -51,7 +53,7 @@ static float const MinYAxisRange = 5;
   
   [super viewDidLoad];
   
-  self.view.backgroundColor = [SChartiOS7Theme new].chartStyle.backgroundColor;
+  self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)createChart {
@@ -106,14 +108,36 @@ static float const MinYAxisRange = 5;
   self.chart.autoresizingMask = ~UIViewAutoresizingNone;
   self.chart.rotatesOnDeviceRotation = NO;
   
-  // Create a theme and style the line series
+  // Create a theme
   SChartTheme *chartTheme = [SChartiOS7Theme new];
+  UIColor *darkGrayColor = [UIColor shinobiDarkGrayColor];
+  chartTheme.chartTitleStyle.font = [UIFont shinobiFontOfSize:30];
+  chartTheme.chartTitleStyle.textColor = darkGrayColor;
+  chartTheme.chartTitleStyle.titleCentresOn = SChartTitleCentresOnChart;
+  chartTheme.chartStyle.backgroundColor = [UIColor whiteColor];
+  chartTheme.legendStyle.borderWidth = 0;
+  chartTheme.legendStyle.font = [UIFont shinobiFontOfSize:16];
+  chartTheme.legendStyle.titleFontColor = darkGrayColor;
+  chartTheme.legendStyle.fontColor = darkGrayColor;
+  chartTheme.xAxisStyle.titleStyle.font = [UIFont shinobiFontOfSize:16];
+  chartTheme.xAxisStyle.titleStyle.textColor = darkGrayColor;
+  chartTheme.xAxisStyle.majorTickStyle.labelFont = [UIFont lightShinobiFontOfSize:14];
+  chartTheme.xAxisStyle.majorTickStyle.labelColor = darkGrayColor;
+  chartTheme.xAxisStyle.lineColor = darkGrayColor;
+  // Set yAxisStyle to match xAxisStyle (note we can't just copy the whole style object
+  // as that will make the axis label the wrong orientation)
+  chartTheme.yAxisStyle.titleStyle.font = chartTheme.yAxisStyle.titleStyle.font;
+  chartTheme.yAxisStyle.titleStyle.textColor = chartTheme.yAxisStyle.titleStyle.textColor;
+  chartTheme.yAxisStyle.majorTickStyle = chartTheme.xAxisStyle.majorTickStyle;
+  chartTheme.yAxisStyle.minorTickStyle = chartTheme.xAxisStyle.minorTickStyle;
+  chartTheme.yAxisStyle.lineColor = chartTheme.xAxisStyle.lineColor;
+  // Style the line series
   SChartLineSeriesStyle *lineSeriesStyle = [chartTheme lineSeriesStyleForSeriesAtIndex:0 selected:NO];
   lineSeriesStyle.showFill = YES;
   lineSeriesStyle.areaLineWidth = @2.f;
-  lineSeriesStyle.areaLineColor = [UIColor colorWithRed:48.f/255.f green:104.f/255.f blue:18.f/255.f alpha:1.f];
-  lineSeriesStyle.areaColor = [UIColor colorWithRed:48.f/255.f green:104.f/255.f blue:18.f/255.f alpha:0.9f];
-  lineSeriesStyle.areaColorLowGradient = [UIColor colorWithRed:92.f/255.f green:160.f/255.f blue:56.f/255.f alpha:0.7f];
+  lineSeriesStyle.areaLineColor = [UIColor shinobiPlayGreenColor];
+  lineSeriesStyle.areaColor = [UIColor shinobiPlayGreenColor];
+  lineSeriesStyle.areaColorLowGradient = [[UIColor shinobiPlayGreenColor] shinobiBackgroundColor];
   [self.chart applyTheme:chartTheme];
   
   self.chart.crosshair.tooltip = [[TDFCrosshairTooltip alloc] init];

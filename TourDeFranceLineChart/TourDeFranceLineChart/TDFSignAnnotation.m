@@ -7,6 +7,8 @@
 //
 
 #import "TDFSignAnnotation.h"
+#import "ShinobiPlayUtils/UIColor+SPUColor.h"
+#import "ShinobiPlayUtils/UIFont+SPUFont.h"
 
 static CGSize const LargeFrameSize = { 150.f, 75.f };
 static CGSize const MediumFrameSize = { 100.f, 60.f };
@@ -44,7 +46,7 @@ typedef NS_ENUM(NSInteger, AnimationType) {
     self.endName = endName;
     self.distance = distance;
     
-    self.fillColour = [UIColor darkGrayColor];
+    self.fillColour = [UIColor shinobiDarkGrayColor];
     
     self.signpostView = [[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, 3.f, self.frame.size.height)];
     self.signpostView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
@@ -58,12 +60,13 @@ typedef NS_ENUM(NSInteger, AnimationType) {
     self.stageLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.stageLabel.backgroundColor = [UIColor clearColor];
     self.stageLabel.textColor = [UIColor whiteColor];
+    self.stageLabel.font = [UIFont shinobiFontOfSize:LargeFontSize];
     [self.signView addSubview:self.stageLabel];
     
     self.detailsLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     self.detailsLabel.backgroundColor = [UIColor clearColor];
     self.detailsLabel.textColor = [UIColor whiteColor];
-    self.detailsLabel.font = [UIFont systemFontOfSize:SmallFontSize];
+    self.detailsLabel.font = [UIFont shinobiFontOfSize:SmallFontSize];
     [self.signView addSubview:self.detailsLabel];
     
     self.signArrowView = [[TDFSignArrowView alloc] initWithFrame:CGRectZero];
@@ -85,18 +88,18 @@ typedef NS_ENUM(NSInteger, AnimationType) {
       
     case StageNumber:
       // Fix the width, so the flags are all the same width, but use the text height
-      stageTextSize = [stageText sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:SmallFontSize]}];
+      stageTextSize = [stageText sizeWithAttributes:@{NSFontAttributeName:[UIFont shinobiFontOfSize:SmallFontSize]}];
       return CGRectMake(0, 0, SmallFrameSize.width/2, stageTextSize.height * 1.2f);
       
     case StageName:
       // Just size based on the stage text size plus some padding
-      stageTextSize = [stageText sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LargeFontSize]}];
+      stageTextSize = [stageText sizeWithAttributes:@{NSFontAttributeName:[UIFont shinobiFontOfSize:LargeFontSize]}];
       return CGRectMake(0, 0, stageTextSize.width + 2*FrameWidthPadding, stageTextSize.height * 1.2f);
       
     case Details:
       // Size based on both stage text size and details text size: max of the widths, and total height (plus padding)
-      stageTextSize = [stageText sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:LargeFontSize]}];
-      CGSize detailsTextSize = [detailsText sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:SmallFontSize]}];
+      stageTextSize = [stageText sizeWithAttributes:@{NSFontAttributeName:[UIFont shinobiFontOfSize:LargeFontSize]}];
+      CGSize detailsTextSize = [detailsText sizeWithAttributes:@{NSFontAttributeName:[UIFont shinobiFontOfSize:SmallFontSize]}];
       CGFloat width = MAX(stageTextSize.width, detailsTextSize.width) + 2*FrameWidthPadding;
       return CGRectMake(0, 0, width, (stageTextSize.height + detailsTextSize.height) * 1.2f);
   }
@@ -135,8 +138,8 @@ typedef NS_ENUM(NSInteger, AnimationType) {
 - (void)updateLabelsWithStageText:(NSString *)stageText detailsText:(NSString *)detailsText
                       detailLevel:(DetailLevel)detailLevel {
   self.stageLabel.text = stageText;
-  self.stageLabel.font = (detailLevel == StageNumber) ? [UIFont systemFontOfSize:SmallFontSize]
-                                                      : [UIFont systemFontOfSize:LargeFontSize];
+  self.stageLabel.font = (detailLevel == StageNumber) ? [UIFont shinobiFontOfSize:SmallFontSize]
+                                                      : [UIFont shinobiFontOfSize:LargeFontSize];
   [self.stageLabel sizeToFit];
   
   self.detailsLabel.text = detailsText;
