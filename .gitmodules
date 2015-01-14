@@ -1,4 +1,4 @@
-[submodule "TourDeFranceLineChart/ShinobiPlayUtils"]
-	path = TourDeFranceLineChart/ShinobiPlayUtils
-	url = git@bitbucket.org:shinobicontrols/shinobi-play-utils.git
+[submodule "TourDeFranceLineChart/ShinobiPlayChartsUtils"]
+	path = TourDeFranceLineChart/ShinobiPlayChartsUtils
+	url = git@bitbucket.org:shinobicontrols/shinobi-play-utils-charts.git
 	branch = master
