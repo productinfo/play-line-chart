@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682C3F691A6E44C800EF95D0 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F5D1A6E44C800EF95D0 /* Roboto-Black.ttf */; };
+		682C3F6A1A6E44C800EF95D0 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F5E1A6E44C800EF95D0 /* Roboto-BlackItalic.ttf */; };
+		682C3F6B1A6E44C800EF95D0 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F5F1A6E44C800EF95D0 /* Roboto-Bold.ttf */; };
+		682C3F6C1A6E44C800EF95D0 /* Roboto-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F601A6E44C800EF95D0 /* Roboto-BoldItalic.ttf */; };
+		682C3F6D1A6E44C800EF95D0 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F611A6E44C800EF95D0 /* Roboto-Italic.ttf */; };
+		682C3F6E1A6E44C800EF95D0 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F621A6E44C800EF95D0 /* Roboto-Light.ttf */; };
+		682C3F6F1A6E44C800EF95D0 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F631A6E44C800EF95D0 /* Roboto-LightItalic.ttf */; };
+		682C3F701A6E44C800EF95D0 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F641A6E44C800EF95D0 /* Roboto-Medium.ttf */; };
+		682C3F711A6E44C800EF95D0 /* Roboto-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F651A6E44C800EF95D0 /* Roboto-MediumItalic.ttf */; };
+		682C3F721A6E44C800EF95D0 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F661A6E44C800EF95D0 /* Roboto-Regular.ttf */; };
+		682C3F731A6E44C800EF95D0 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F671A6E44C800EF95D0 /* Roboto-Thin.ttf */; };
+		682C3F741A6E44C800EF95D0 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F681A6E44C800EF95D0 /* Roboto-ThinItalic.ttf */; };
+		689A3BC01A66B050006EB8D3 /* libShinobiPlayChartsUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 689A3BBD1A66AFBE006EB8D3 /* libShinobiPlayChartsUtils.a */; };
 		68C4098E196AB046006345A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4098D196AB046006345A6 /* Foundation.framework */; };
 		68C40990196AB046006345A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4098F196AB046006345A6 /* CoreGraphics.framework */; };
 		68C40992196AB046006345A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C40991196AB046006345A6 /* UIKit.framework */; };
@@ -16,7 +29,6 @@
 		68C409A1196AB046006345A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C4099F196AB046006345A6 /* Main.storyboard */; };
 		68C409A4196AB046006345A6 /* TDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C409A3196AB046006345A6 /* TDFViewController.m */; };
 		68C409A6196AB046006345A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C409A5196AB046006345A6 /* Images.xcassets */; };
-		68C409CB196AB3B6006345A6 /* libShinobiPlayUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C409C8196AB376006345A6 /* libShinobiPlayUtils.a */; };
 		68C409CD196AB3BD006345A6 /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C409CC196AB3BD006345A6 /* ShinobiCharts.framework */; };
 		68C409D0196AC65D006345A6 /* TDFDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C409CF196AC65D006345A6 /* TDFDataSource.m */; };
 		68C409D6196AC698006345A6 /* TDFChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C409D2196AC698006345A6 /* TDFChartData.m */; };
@@ -31,23 +43,37 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		68C409C7196AB376006345A6 /* PBXContainerItemProxy */ = {
+		689A3BBC1A66AFBE006EB8D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 68C409C2196AB376006345A6 /* ShinobiPlayUtils.xcodeproj */;
+			containerPortal = 689A3BB61A66AFBE006EB8D3 /* ShinobiPlayChartsUtils.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 68793C011959855D009C17BD;
-			remoteInfo = ShinobiPlayUtils;
+			remoteGlobalIDString = 684FAE071A6690EB000DD2BC;
+			remoteInfo = ShinobiPlayChartsUtils;
 		};
-		68C409C9196AB376006345A6 /* PBXContainerItemProxy */ = {
+		689A3BBE1A66AFBE006EB8D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 68C409C2196AB376006345A6 /* ShinobiPlayUtils.xcodeproj */;
+			containerPortal = 689A3BB61A66AFBE006EB8D3 /* ShinobiPlayChartsUtils.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 68793C111959855E009C17BD;
-			remoteInfo = ShinobiPlayUtilsTests;
+			remoteGlobalIDString = 684FAE121A6690EB000DD2BC;
+			remoteInfo = ShinobiPlayChartsUtilsTests;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		682C3F5D1A6E44C800EF95D0 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		682C3F5E1A6E44C800EF95D0 /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		682C3F5F1A6E44C800EF95D0 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		682C3F601A6E44C800EF95D0 /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		682C3F611A6E44C800EF95D0 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		682C3F621A6E44C800EF95D0 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		682C3F631A6E44C800EF95D0 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		682C3F641A6E44C800EF95D0 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		682C3F651A6E44C800EF95D0 /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		682C3F661A6E44C800EF95D0 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		682C3F671A6E44C800EF95D0 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		682C3F681A6E44C800EF95D0 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		689A3BB61A66AFBE006EB8D3 /* ShinobiPlayChartsUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShinobiPlayChartsUtils.xcodeproj; path = ShinobiPlayChartsUtils/ShinobiPlayChartsUtils/ShinobiPlayChartsUtils.xcodeproj; sourceTree = "<group>"; };
+		689A3BC11A66B057006EB8D3 /* libShinobiPlayUtils.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShinobiPlayUtils.a; path = "ShinobiPlayChartsUtils/ShinobiPlayChartsUtils/ShinobiPlayUtils/ShinobiPlayUtils/build/Debug-iphoneos/libShinobiPlayUtils.a"; sourceTree = "<group>"; };
 		68C4098A196AB046006345A6 /* TourDeFranceLineChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TourDeFranceLineChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C4098D196AB046006345A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68C4098F196AB046006345A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,7 +89,6 @@
 		68C409A3196AB046006345A6 /* TDFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDFViewController.m; sourceTree = "<group>"; };
 		68C409A5196AB046006345A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		68C409AC196AB046006345A6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		68C409C2196AB376006345A6 /* ShinobiPlayUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShinobiPlayUtils.xcodeproj; path = ShinobiPlayUtils/ShinobiPlayUtils/ShinobiPlayUtils.xcodeproj; sourceTree = "<group>"; };
 		68C409CC196AB3BD006345A6 /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiCharts.framework; path = Library/Frameworks/ShinobiCharts.framework; sourceTree = DEVELOPER_DIR; };
 		68C409CE196AC65D006345A6 /* TDFDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFDataSource.h; sourceTree = "<group>"; };
 		68C409CF196AC65D006345A6 /* TDFDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFDataSource.m; sourceTree = "<group>"; };
@@ -89,9 +114,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				689A3BC01A66B050006EB8D3 /* libShinobiPlayChartsUtils.a in Frameworks */,
 				68C409DA196AC79A006345A6 /* libstdc++.dylib in Frameworks */,
 				68C409CD196AB3BD006345A6 /* ShinobiCharts.framework in Frameworks */,
-				68C409CB196AB3B6006345A6 /* libShinobiPlayUtils.a in Frameworks */,
 				68C40990196AB046006345A6 /* CoreGraphics.framework in Frameworks */,
 				68C40992196AB046006345A6 /* UIKit.framework in Frameworks */,
 				68C4098E196AB046006345A6 /* Foundation.framework in Frameworks */,
@@ -101,10 +126,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		682C3F5C1A6E44C800EF95D0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				682C3F5D1A6E44C800EF95D0 /* Roboto-Black.ttf */,
+				682C3F5E1A6E44C800EF95D0 /* Roboto-BlackItalic.ttf */,
+				682C3F5F1A6E44C800EF95D0 /* Roboto-Bold.ttf */,
+				682C3F601A6E44C800EF95D0 /* Roboto-BoldItalic.ttf */,
+				682C3F611A6E44C800EF95D0 /* Roboto-Italic.ttf */,
+				682C3F621A6E44C800EF95D0 /* Roboto-Light.ttf */,
+				682C3F631A6E44C800EF95D0 /* Roboto-LightItalic.ttf */,
+				682C3F641A6E44C800EF95D0 /* Roboto-Medium.ttf */,
+				682C3F651A6E44C800EF95D0 /* Roboto-MediumItalic.ttf */,
+				682C3F661A6E44C800EF95D0 /* Roboto-Regular.ttf */,
+				682C3F671A6E44C800EF95D0 /* Roboto-Thin.ttf */,
+				682C3F681A6E44C800EF95D0 /* Roboto-ThinItalic.ttf */,
+			);
+			name = Fonts;
+			path = ShinobiPlayChartsUtils/ShinobiPlayChartsUtils/ShinobiPlayUtils/ShinobiPlayUtils/ShinobiPlayUtils/Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
+		689A3BB71A66AFBE006EB8D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				689A3BBD1A66AFBE006EB8D3 /* libShinobiPlayChartsUtils.a */,
+				689A3BBF1A66AFBE006EB8D3 /* ShinobiPlayChartsUtilsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		68C40981196AB046006345A6 = {
 			isa = PBXGroup;
 			children = (
-				68C409C2196AB376006345A6 /* ShinobiPlayUtils.xcodeproj */,
+				689A3BB61A66AFBE006EB8D3 /* ShinobiPlayChartsUtils.xcodeproj */,
 				68C40993196AB046006345A6 /* TourDeFranceLineChart */,
 				68C4098C196AB046006345A6 /* Frameworks */,
 				68C4098B196AB046006345A6 /* Products */,
@@ -122,6 +176,7 @@
 		68C4098C196AB046006345A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				689A3BC11A66B057006EB8D3 /* libShinobiPlayUtils.a */,
 				68C409D9196AC79A006345A6 /* libstdc++.dylib */,
 				68C409CC196AB3BD006345A6 /* ShinobiCharts.framework */,
 				68C4098D196AB046006345A6 /* Foundation.framework */,
@@ -135,6 +190,7 @@
 		68C40993196AB046006345A6 /* TourDeFranceLineChart */ = {
 			isa = PBXGroup;
 			children = (
+				682C3F5C1A6E44C800EF95D0 /* Fonts */,
 				68FCC082196C10EF0020AD05 /* Data */,
 				68FCC081196C10E00020AD05 /* Annotations */,
 				68C409E6196C020B006345A6 /* TDFCrosshairTooltip.h */,
@@ -159,15 +215,6 @@
 				68C4099B196AB046006345A6 /* TourDeFranceLineChart-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		68C409C3196AB376006345A6 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				68C409C8196AB376006345A6 /* libShinobiPlayUtils.a */,
-				68C409CA196AB376006345A6 /* ShinobiPlayUtilsTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		68FCC081196C10E00020AD05 /* Annotations */ = {
@@ -241,8 +288,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 68C409C3196AB376006345A6 /* Products */;
-					ProjectRef = 68C409C2196AB376006345A6 /* ShinobiPlayUtils.xcodeproj */;
+					ProductGroup = 689A3BB71A66AFBE006EB8D3 /* Products */;
+					ProjectRef = 689A3BB61A66AFBE006EB8D3 /* ShinobiPlayChartsUtils.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -253,18 +300,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		68C409C8196AB376006345A6 /* libShinobiPlayUtils.a */ = {
+		689A3BBD1A66AFBE006EB8D3 /* libShinobiPlayChartsUtils.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libShinobiPlayUtils.a;
-			remoteRef = 68C409C7196AB376006345A6 /* PBXContainerItemProxy */;
+			path = libShinobiPlayChartsUtils.a;
+			remoteRef = 689A3BBC1A66AFBE006EB8D3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		68C409CA196AB376006345A6 /* ShinobiPlayUtilsTests.xctest */ = {
+		689A3BBF1A66AFBE006EB8D3 /* ShinobiPlayChartsUtilsTests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = ShinobiPlayUtilsTests.xctest;
-			remoteRef = 68C409C9196AB376006345A6 /* PBXContainerItemProxy */;
+			path = ShinobiPlayChartsUtilsTests.xctest;
+			remoteRef = 689A3BBE1A66AFBE006EB8D3 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -274,11 +321,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				682C3F731A6E44C800EF95D0 /* Roboto-Thin.ttf in Resources */,
+				682C3F701A6E44C800EF95D0 /* Roboto-Medium.ttf in Resources */,
+				682C3F6C1A6E44C800EF95D0 /* Roboto-BoldItalic.ttf in Resources */,
 				68C409A6196AB046006345A6 /* Images.xcassets in Resources */,
+				682C3F6F1A6E44C800EF95D0 /* Roboto-LightItalic.ttf in Resources */,
+				682C3F711A6E44C800EF95D0 /* Roboto-MediumItalic.ttf in Resources */,
 				68C409DC196AC925006345A6 /* tdf2012_distElev.plist in Resources */,
+				682C3F6E1A6E44C800EF95D0 /* Roboto-Light.ttf in Resources */,
 				68C40998196AB046006345A6 /* InfoPlist.strings in Resources */,
+				682C3F6A1A6E44C800EF95D0 /* Roboto-BlackItalic.ttf in Resources */,
+				682C3F741A6E44C800EF95D0 /* Roboto-ThinItalic.ttf in Resources */,
 				68C409A1196AB046006345A6 /* Main.storyboard in Resources */,
 				68C409D7196AC698006345A6 /* tdf2012_peaks.plist in Resources */,
+				682C3F6D1A6E44C800EF95D0 /* Roboto-Italic.ttf in Resources */,
+				682C3F721A6E44C800EF95D0 /* Roboto-Regular.ttf in Resources */,
+				682C3F6B1A6E44C800EF95D0 /* Roboto-Bold.ttf in Resources */,
+				682C3F691A6E44C800EF95D0 /* Roboto-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +467,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TourDeFranceLineChart/TourDeFranceLineChart-Prefix.pch";
 				INFOPLIST_FILE = "TourDeFranceLineChart/TourDeFranceLineChart-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ShinobiPlayChartsUtils/ShinobiPlayChartsUtils/ShinobiPlayUtils/ShinobiPlayUtils/build/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = TourDeFranceLineChart;
 				WRAPPER_EXTENSION = app;
 			};
@@ -425,6 +489,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TourDeFranceLineChart/TourDeFranceLineChart-Prefix.pch";
 				INFOPLIST_FILE = "TourDeFranceLineChart/TourDeFranceLineChart-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ShinobiPlayChartsUtils/ShinobiPlayChartsUtils/ShinobiPlayUtils/ShinobiPlayUtils/build/Debug-iphoneos",
+				);
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = TourDeFranceLineChart;
 				WRAPPER_EXTENSION = app;
 			};

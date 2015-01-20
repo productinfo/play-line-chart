@@ -7,6 +7,7 @@
 //
 
 #import "TDFSignArrowView.h"
+#import "ShinobiPlayUtils/UIColor+SPUColor.h"
 
 @interface TDFSignArrowView()
 
@@ -20,7 +21,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    self.fillColour = [UIColor darkGrayColor];
+    self.fillColour = [UIColor shinobiDarkGrayColor];
   }
   return self;
 }

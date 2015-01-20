@@ -7,6 +7,8 @@
 //
 
 #import "TDFPeakAnnotation.h"
+#import "ShinobiPlayUtils/UIColor+SPUColor.h"
+#import "ShinobiPlayUtils/UIFont+SPUFont.h"
 
 static float const FontSize = 14.f;
 
@@ -24,16 +26,16 @@ static float const FontSize = 14.f;
   
   if (self) {
     self.nameLabel = [[UILabel alloc] initWithFrame:(CGRect){0.0f, 0.0f, 1.0f, 1.0f}];
-    self.nameLabel.font = [UIFont systemFontOfSize:FontSize];
-    self.nameLabel.textColor = [UIColor darkGrayColor];
+    self.nameLabel.font = [UIFont shinobiFontOfSize:FontSize];
+    self.nameLabel.textColor = [UIColor shinobiDarkGrayColor];
     self.nameLabel.textAlignment = NSTextAlignmentCenter;
     self.nameLabel.backgroundColor = [UIColor clearColor];
     
     [self addSubview:self.nameLabel];
     
     self.elevationLabel = [[UILabel alloc] initWithFrame:(CGRect){0.0f, 0.0f, 1.0f, 1.0f}];
-    self.elevationLabel.font = [UIFont systemFontOfSize:FontSize];
-    self.elevationLabel.textColor = [UIColor darkGrayColor];
+    self.elevationLabel.font = [UIFont shinobiFontOfSize:FontSize];
+    self.elevationLabel.textColor = [UIColor shinobiDarkGrayColor];
     self.elevationLabel.textAlignment = NSTextAlignmentCenter;
     self.elevationLabel.backgroundColor = [UIColor clearColor];
     
