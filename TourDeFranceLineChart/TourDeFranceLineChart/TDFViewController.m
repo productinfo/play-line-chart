@@ -140,8 +140,8 @@ static float const MinYAxisRange = 5;
   lineSeriesStyle.areaColorLowGradient = [[UIColor shinobiPlayGreenColor] shinobiBackgroundColor];
   [self.chart applyTheme:chartTheme];
   
-  SChartCrosshair *concreteCrosshair = (SChartCrosshair*)self.chart.crosshair ;
-  concreteCrosshair.tooltip = [[TDFCrosshairTooltip alloc] init];
+  SChartCrosshair *crosshair = (SChartCrosshair*)self.chart.crosshair;
+  crosshair.tooltip = [[TDFCrosshairTooltip alloc] init];
 }
 
 - (void)setupAfterDataLoad {
