@@ -15,7 +15,7 @@ If you clone this project using GitHub Desktop, the submodules should be checked
 If you [download the zip](../../archive/master.zip) rather than cloning the project, you'll also have to download the submodule zips:
 
 1. Download [play-charts-utils](https://github.com/ShinobiControls/play-charts-utils/archive/master.zip) and extract its contents into the **TourDeFranceLineChart/ShinobiPlayChartsUtils** directory.
-2. Download [play-utils](https://github.com/ShinobiControls/play-utils/archive/master.zip) and extract its contents into the **TourDeFranceLineChart/ShinobiPlayChartsUtils/** directory.
+2. Download [play-utils](https://github.com/ShinobiControls/play-utils/archive/master.zip) and extract its contents into the **TourDeFranceLineChart/ShinobiPlayChartsUtils/ShinobiPlayChartsUtils/ShinobiPlayUtils** directory.
 
 Your directory structure should end up looking something like this:
 
