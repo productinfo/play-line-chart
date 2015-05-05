@@ -126,8 +126,8 @@ static float const MinYAxisRange = 5;
   chartTheme.xAxisStyle.lineColor = darkGrayColor;
   // Set yAxisStyle to match xAxisStyle (note we can't just copy the whole style object
   // as that will make the axis label the wrong orientation)
-  chartTheme.yAxisStyle.titleStyle.font = chartTheme.yAxisStyle.titleStyle.font;
-  chartTheme.yAxisStyle.titleStyle.textColor = chartTheme.yAxisStyle.titleStyle.textColor;
+  chartTheme.yAxisStyle.titleStyle.font = chartTheme.xAxisStyle.titleStyle.font;
+  chartTheme.yAxisStyle.titleStyle.textColor = chartTheme.xAxisStyle.titleStyle.textColor;
   chartTheme.yAxisStyle.majorTickStyle = chartTheme.xAxisStyle.majorTickStyle;
   chartTheme.yAxisStyle.minorTickStyle = chartTheme.xAxisStyle.minorTickStyle;
   chartTheme.yAxisStyle.lineColor = chartTheme.xAxisStyle.lineColor;
@@ -140,7 +140,8 @@ static float const MinYAxisRange = 5;
   lineSeriesStyle.areaColorLowGradient = [[UIColor shinobiPlayGreenColor] shinobiBackgroundColor];
   [self.chart applyTheme:chartTheme];
   
-  self.chart.crosshair.tooltip = [[TDFCrosshairTooltip alloc] init];
+  SChartCrosshair *crosshair = (SChartCrosshair*)self.chart.crosshair;
+  crosshair.tooltip = [[TDFCrosshairTooltip alloc] init];
 }
 
 - (void)setupAfterDataLoad {
