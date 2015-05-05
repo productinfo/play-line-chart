@@ -55,6 +55,11 @@ static dispatch_once_t pred;
         NSArray *ptToStore = @[@(cumDist), trackPoint[1]];
         [distElevTrack addObject:ptToStore];
       }
+      
+      // Add an extra datapoint to the end of each stage, with a null elevation. This will
+      // show up in the chart as a discontinuity in the series
+      [distElevTrack addObject:@[@(cumDist), [NSNull null]]];
+      
       NSUInteger endIdx = [self.distElevTrack count] - 1;
       
       NSDictionary *curStageData = @{@"start_name": stage[@"start_name"],
@@ -91,20 +96,21 @@ static dispatch_once_t pred;
 }
 
 - (NSUInteger)numberOfDataPoints {
-    return [self.distElevTrack count];
+  return [self.distElevTrack count];
 }
 
 - (NSNumber *)getDistanceAtIndex:(NSUInteger)idx {
-    return (self.distElevTrack)[idx][0];
+  return self.distElevTrack[idx][0];
 }
 
 - (NSNumber *)getElevationAtIndex:(NSUInteger)idx {
-    return (self.distElevTrack)[idx][1];
+  NSNumber * elevation = self.distElevTrack[idx][1];
+  return [elevation isEqual:[NSNull null]] ? nil : elevation;
 }
 
 // Returns the total number of stages
 - (NSUInteger)numberOfStages {
-    return [self.stageData count];
+  return [self.stageData count];
 }
 
 // Returns an array of start and end stage names
