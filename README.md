@@ -6,7 +6,7 @@ A line chart which demonstrates customizing styling, crosshairs and annotations.
 
 Cloning or downloading the project
 ------------------
-This project uses git submodules to include some code common to various ShinobiPlay projects.
+This project uses git submodules to include some code common to various **shinobiplay** projects.
 
 If you clone this project using GitHub Desktop, the submodules should be checked out automatically for you. Otherwise you can fetch the submodules on the command line using:
 
@@ -35,9 +35,9 @@ Your directory structure should end up looking something like this:
 Building the project
 ------------------
 
-In order to build this project you'll need a copy of ShinobiCharts. If you don't have it yet, you can download a free trial from the [**shinobicontrols** website](https://www.shinobicontrols.com).
+In order to build this project you'll need a copy of **shinobicharts**. If you don't have it yet, you can download a free trial from the [**shinobicontrols** website](https://www.shinobicontrols.com).
 
-If you've used the installer to install ShinobiCharts, the project should just work. If you haven't, then once you've downloaded and unzipped ShinobiCharts, open up the project in Xcode, and drag ShinobiCharts.framework from the finder into Xcode's 'frameworks' group, and Xcode will sort out all the header and linker paths for you.
+If you've used the installer to install **shinobicharts**, the project should just work. If you haven't, then once you've downloaded and unzipped **shinobicharts**, open up the project in Xcode, and drag ShinobiCharts.framework from the finder into Xcode's 'frameworks' group, and Xcode will sort out all the header and linker paths for you.
 
 If you're using the trial version you'll need to add your license key. To do so, open up **TDFViewController.m** and add the following line inside `viewDidLoad`:
 
