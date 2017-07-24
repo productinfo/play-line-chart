@@ -41,7 +41,7 @@ If you've used the installer to install **shinobicharts**, the project should ju
 
 If you're using the trial version you'll need to add your license key. To do so, open up **TDFViewController.m** and add the following line inside `viewDidLoad`:
 
-    [ShinobiCharts setLicenseKey:@"your license key"];
+    [ShinobiCharts setTrialKey:@"your trial key"];
 
 Contributing
 ------------
