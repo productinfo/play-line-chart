@@ -106,8 +106,8 @@ static float const FontSize = 14.f;
                      }
                      completion:^(BOOL finished){
                          // If we're out of sync at the end of the animation, set the alpha to the correct value.  Don't bother animating this change
-                         if (_show != show) {
-                             if (_show)     {
+                         if (self.show != show) {
+                             if (self.show)     {
                                  self.alpha = 1.f;
                              } else {
                                  self.alpha = 0.f;
