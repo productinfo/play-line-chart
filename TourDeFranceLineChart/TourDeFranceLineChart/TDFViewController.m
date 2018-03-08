@@ -101,8 +101,8 @@ static float const MinYAxisRange = 5;
   self.chart.yAxis = yAxis;
   
   // Set double tap in main chart to reset the zoom
-  self.chart.gestureDoubleTapResetsZoom = YES;
-  self.chart.gestureDoubleTapEnabled = YES;
+  self.chart.gestureManager.doubleTapResetsZoom = YES;
+  self.chart.gestureManager.doubleTapEnabled = YES;
   
   // As the chart is a UIView, set its resizing mask to allow it to automatically resize when screen orientation changes.
   self.chart.autoresizingMask = ~UIViewAutoresizingNone;
@@ -148,8 +148,8 @@ static float const MinYAxisRange = 5;
   // Create some annotations
   [self createStageAnnotations];
   [self createPeakAnnotations];
-  [self modifyAnnotationsIfNeeded:[self.chart.xAxis.axisRange.span intValue] currentDetailLevel:Nothing];
-  [self modifyPeakAnnotations:[self.chart.xAxis.axisRange.span intValue] forceUpdate:YES];
+  [self modifyAnnotationsIfNeeded:[self.chart.xAxis.range.span intValue] currentDetailLevel:Nothing];
+  [self modifyPeakAnnotations:[self.chart.xAxis.range.span intValue] forceUpdate:YES];
 }
 
 - (void)createPeakAnnotations {
@@ -232,15 +232,15 @@ static float const MinYAxisRange = 5;
 }
 
 - (void)adjustAxisRangeIfNeeded:(SChartAxis*)axis toRange:(float)range {
-  NSNumber *axisSpan = axis.axisRange.span;
+  NSNumber *axisSpan = axis.range.span;
   if ([axisSpan floatValue] < range) {
-    NSNumber *min = axis.axisRange.minimum;
+    NSNumber *min = axis.range.minimum;
     float center = [min floatValue] + ([axisSpan floatValue] / 2);
     
     NSNumber *newMin = @(center - (range / 2));
     NSNumber *newMax = @(center + (range / 2));
     
-    [axis setRangeWithMinimum:newMin andMaximum:newMax];
+    [axis setRange:[[SChartRange alloc] initWithMinimum:newMin andMaximum:newMax]];
     [self.chart redrawChart];
   }
 }
@@ -249,7 +249,7 @@ static float const MinYAxisRange = 5;
   [self adjustAxisRangeIfNeeded:chart.xAxis toRange:MinXAxisRange];
   [self adjustAxisRangeIfNeeded:chart.yAxis toRange:MinYAxisRange];
   
-  NSNumber *xAxisSpan = self.chart.xAxis.axisRange.span;
+  NSNumber *xAxisSpan = self.chart.xAxis.range.span;
   TDFSignAnnotation *firstSignAnnotation = self.stageAnnotations[0];
   DetailLevel currentDetailLevel = firstSignAnnotation.detailLevel;
   [self modifyAnnotationsIfNeeded:[xAxisSpan intValue] currentDetailLevel:currentDetailLevel];
