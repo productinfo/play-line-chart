@@ -245,17 +245,19 @@ static float const MinYAxisRange = 5;
   }
 }
 
-- (void)sChartIsZooming:(ShinobiChart *)chart withChartMovementInformation:(const SChartMovementInformation *)information {
+- (void)sChart:(ShinobiChart *)chart didAlterRangeOnAxis:(SChartAxis *)axis {
   [self adjustAxisRangeIfNeeded:chart.xAxis toRange:MinXAxisRange];
   [self adjustAxisRangeIfNeeded:chart.yAxis toRange:MinYAxisRange];
-  
+
   NSNumber *xAxisSpan = self.chart.xAxis.range.span;
-  TDFSignAnnotation *firstSignAnnotation = self.stageAnnotations[0];
-  DetailLevel currentDetailLevel = firstSignAnnotation.detailLevel;
-  [self modifyAnnotationsIfNeeded:[xAxisSpan intValue] currentDetailLevel:currentDetailLevel];
-  [self modifyPeakAnnotationsIfNeeded:[xAxisSpan intValue]];
-  
-  self.lastXAxisSpan = [xAxisSpan intValue];
+  if ([xAxisSpan intValue] != self.lastXAxisSpan) {
+    TDFSignAnnotation *firstSignAnnotation = self.stageAnnotations[0];
+    DetailLevel currentDetailLevel = firstSignAnnotation.detailLevel;
+    [self modifyAnnotationsIfNeeded:[xAxisSpan intValue] currentDetailLevel:currentDetailLevel];
+    [self modifyPeakAnnotationsIfNeeded:[xAxisSpan intValue]];
+
+    self.lastXAxisSpan = [xAxisSpan intValue];
+  }
 }
 
 @end
