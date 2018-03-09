@@ -19,7 +19,6 @@
 		682C3F721A6E44C800EF95D0 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F661A6E44C800EF95D0 /* Roboto-Regular.ttf */; };
 		682C3F731A6E44C800EF95D0 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F671A6E44C800EF95D0 /* Roboto-Thin.ttf */; };
 		682C3F741A6E44C800EF95D0 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 682C3F681A6E44C800EF95D0 /* Roboto-ThinItalic.ttf */; };
-		689A3BC01A66B050006EB8D3 /* libShinobiPlayChartsUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 689A3BBD1A66AFBE006EB8D3 /* libShinobiPlayChartsUtils.a */; };
 		68C4098E196AB046006345A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4098D196AB046006345A6 /* Foundation.framework */; };
 		68C40990196AB046006345A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C4098F196AB046006345A6 /* CoreGraphics.framework */; };
 		68C40992196AB046006345A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C40991196AB046006345A6 /* UIKit.framework */; };
@@ -34,12 +33,13 @@
 		68C409D6196AC698006345A6 /* TDFChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C409D2196AC698006345A6 /* TDFChartData.m */; };
 		68C409D7196AC698006345A6 /* tdf2012_peaks.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68C409D3196AC698006345A6 /* tdf2012_peaks.plist */; };
 		68C409D8196AC698006345A6 /* TDFPeak.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C409D5196AC698006345A6 /* TDFPeak.m */; };
-		68C409DA196AC79A006345A6 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 68C409D9196AC79A006345A6 /* libstdc++.dylib */; };
 		68C409DC196AC925006345A6 /* tdf2012_distElev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68C409DB196AC925006345A6 /* tdf2012_distElev.plist */; };
 		68C409E3196ADCAF006345A6 /* TDFSignAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C409DE196ADCAF006345A6 /* TDFSignAnnotation.m */; };
 		68C409E4196ADCAF006345A6 /* TDFSignArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C409E0196ADCAF006345A6 /* TDFSignArrowView.m */; };
 		68C409E5196ADCAF006345A6 /* TDFPeakAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C409E2196ADCAF006345A6 /* TDFPeakAnnotation.m */; };
 		68C409E8196C020B006345A6 /* TDFCrosshairTooltip.m in Sources */ = {isa = PBXBuildFile; fileRef = 68C409E7196C020B006345A6 /* TDFCrosshairTooltip.m */; };
+		B246372F205180E200827503 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B246372E205180E200827503 /* libc++.tbd */; };
+		B24637322051818E00827503 /* libShinobiPlayChartsUtils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 689A3BBD1A66AFBE006EB8D3 /* libShinobiPlayChartsUtils.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,7 +73,6 @@
 		682C3F671A6E44C800EF95D0 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		682C3F681A6E44C800EF95D0 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		689A3BB61A66AFBE006EB8D3 /* ShinobiPlayChartsUtils.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShinobiPlayChartsUtils.xcodeproj; path = ShinobiPlayChartsUtils/ShinobiPlayChartsUtils/ShinobiPlayChartsUtils.xcodeproj; sourceTree = "<group>"; };
-		689A3BC11A66B057006EB8D3 /* libShinobiPlayUtils.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libShinobiPlayUtils.a; path = "ShinobiPlayChartsUtils/ShinobiPlayChartsUtils/ShinobiPlayUtils/ShinobiPlayUtils/build/Debug-iphoneos/libShinobiPlayUtils.a"; sourceTree = "<group>"; };
 		68C4098A196AB046006345A6 /* TourDeFranceLineChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TourDeFranceLineChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C4098D196AB046006345A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68C4098F196AB046006345A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,7 +87,6 @@
 		68C409A2196AB046006345A6 /* TDFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDFViewController.h; sourceTree = "<group>"; };
 		68C409A3196AB046006345A6 /* TDFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TDFViewController.m; sourceTree = "<group>"; };
 		68C409A5196AB046006345A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		68C409AC196AB046006345A6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		68C409CC196AB3BD006345A6 /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiCharts.framework; path = Library/Frameworks/ShinobiCharts.framework; sourceTree = DEVELOPER_DIR; };
 		68C409CE196AC65D006345A6 /* TDFDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFDataSource.h; sourceTree = "<group>"; };
 		68C409CF196AC65D006345A6 /* TDFDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFDataSource.m; sourceTree = "<group>"; };
@@ -97,7 +95,6 @@
 		68C409D3196AC698006345A6 /* tdf2012_peaks.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tdf2012_peaks.plist; sourceTree = "<group>"; };
 		68C409D4196AC698006345A6 /* TDFPeak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFPeak.h; sourceTree = "<group>"; };
 		68C409D5196AC698006345A6 /* TDFPeak.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFPeak.m; sourceTree = "<group>"; };
-		68C409D9196AC79A006345A6 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		68C409DB196AC925006345A6 /* tdf2012_distElev.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = tdf2012_distElev.plist; sourceTree = "<group>"; };
 		68C409DD196ADCAF006345A6 /* TDFSignAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFSignAnnotation.h; sourceTree = "<group>"; };
 		68C409DE196ADCAF006345A6 /* TDFSignAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFSignAnnotation.m; sourceTree = "<group>"; };
@@ -107,6 +104,7 @@
 		68C409E2196ADCAF006345A6 /* TDFPeakAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFPeakAnnotation.m; sourceTree = "<group>"; };
 		68C409E6196C020B006345A6 /* TDFCrosshairTooltip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDFCrosshairTooltip.h; sourceTree = "<group>"; };
 		68C409E7196C020B006345A6 /* TDFCrosshairTooltip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDFCrosshairTooltip.m; sourceTree = "<group>"; };
+		B246372E205180E200827503 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,8 +112,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				689A3BC01A66B050006EB8D3 /* libShinobiPlayChartsUtils.a in Frameworks */,
-				68C409DA196AC79A006345A6 /* libstdc++.dylib in Frameworks */,
+				B24637322051818E00827503 /* libShinobiPlayChartsUtils.a in Frameworks */,
+				B246372F205180E200827503 /* libc++.tbd in Frameworks */,
 				68C409CD196AB3BD006345A6 /* ShinobiCharts.framework in Frameworks */,
 				68C40990196AB046006345A6 /* CoreGraphics.framework in Frameworks */,
 				68C40992196AB046006345A6 /* UIKit.framework in Frameworks */,
@@ -176,13 +174,11 @@
 		68C4098C196AB046006345A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				689A3BC11A66B057006EB8D3 /* libShinobiPlayUtils.a */,
-				68C409D9196AC79A006345A6 /* libstdc++.dylib */,
+				B246372E205180E200827503 /* libc++.tbd */,
 				68C409CC196AB3BD006345A6 /* ShinobiCharts.framework */,
 				68C4098D196AB046006345A6 /* Foundation.framework */,
 				68C4098F196AB046006345A6 /* CoreGraphics.framework */,
 				68C40991196AB046006345A6 /* UIKit.framework */,
-				68C409AC196AB046006345A6 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -272,7 +268,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = FeaturedLineChart;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Alison Clarke";
 			};
 			buildConfigurationList = 68C40985196AB046006345A6 /* Build configuration list for PBXProject "TourDeFranceLineChart" */;
@@ -391,18 +387,30 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -415,7 +423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -430,25 +438,36 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -460,6 +479,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				DEVELOPMENT_TEAM = XJ74287KY8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -467,11 +489,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TourDeFranceLineChart/TourDeFranceLineChart-Prefix.pch";
 				INFOPLIST_FILE = "TourDeFranceLineChart/TourDeFranceLineChart-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ShinobiPlayChartsUtils/ShinobiPlayChartsUtils/ShinobiPlayUtils/ShinobiPlayUtils/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottlogic.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = TourDeFranceLineChart;
 				WRAPPER_EXTENSION = app;
 			};
@@ -482,6 +502,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
@@ -489,11 +511,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TourDeFranceLineChart/TourDeFranceLineChart-Prefix.pch";
 				INFOPLIST_FILE = "TourDeFranceLineChart/TourDeFranceLineChart-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/ShinobiPlayChartsUtils/ShinobiPlayChartsUtils/ShinobiPlayUtils/ShinobiPlayUtils/build/Debug-iphoneos",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottlogic.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = TourDeFranceLineChart;
 				WRAPPER_EXTENSION = app;
 			};
